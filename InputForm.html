@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Input Type</title>
+        <link rel="stylesheet" href="Style.css">
+    </head>
+    <body>
+        <header class="HeaderContainer">
+            <h1>HTML 5 Form Input Field</h1>
+        </header>
+        <form>
+        <div>
+            <label for="text">Input Type for Name</label>
+            <input type="text" id="text" name="text">
+            <error-output class="text-error" for="text"></error-output>
+            </div>
+            <div>
+                <label for="password">Input Type for Password</label>
+                <input type="password" id="password" name="password">
+                <error-output class="text-pwd" for="pwd"></error-output>  
+            </div>
+            <div>
+                <label for="email">Input Type for Email</label>
+                <input type="email" id="email" name="email">
+                <error-output class="text-email" for="email"></error-output>  
+            </div>
+            <div>
+                <label for="url">Input Type for Url</label>
+                <input type="url" id="url" name="url">
+                <error-output class="text-url" for="text"></error-output>  
+            </div>
+            <div>
+                <label for="number">Input Type for Number</label>
+                <input type="number" id="number" name="number">
+                <error-output class="text-number" for="number"></error-output>  
+            </div>
+            <div>
+                <label for="tel">Tel Input Type</label>
+                <input type="tel" id="tel" name="tel">
+                <error-output class="text-tel" for="tel"></error-output>  
+            </div>
+            <div>
+                <label for="search"> Search Input Type</label>
+                <input type="search" id="search" name="search">
+                <error-output class="text-search" for="search"></error-output>  
+            </div>
+            <div class="nativeDateTimePicker">
+                <label for="party">Choose Date and Time</label>
+                <input type="datetime-local" id="party" name="bday">
+                <error-output class="text-error" for="text"></error-output>  
+            </div>
+            <div>
+                <label for="salary">Choose Your Salary</label>
+                <input type="range" id="salary" name="salary" min="30000" max="50000" step="100" value="100000">
+                <output class="salary-output"></output>
+            </div>
+            <div>
+                <button>Submit</button>
+            </div>
+            </form>
+            <script>
+                const text=document.querySelector('#text');
+                const textError=document.querySelector('.text-error');
+                text.addEventListener('input',function(){
+                let nameRegex=RegExp('^[A-Z]{1}[a-z]{3,20}$')
+                if(nameRegex.test(text.value))
+                textError.textContent="";
+                else
+                textError.textContent="Name is incorrect";
+            })
+            const pass=document.querySelector('#password');
+                const passError=document.querySelector('.text-pwd');
+                pass.addEventListener('input',function(){
+                let passRegex=RegExp('^[A-Z]{1,}[a-z]{1,}[0-9]{1,}[@!#$%^*?]{1,}[0-9]{1,}$')
+                if(passRegex.test(pass.value))
+                passError.textContent="";
+                else
+                passError.textContent="Password is incorrect";
+            })
+            const email=document.querySelector('#email');
+                const emailError=document.querySelector('.text-email');
+                email.addEventListener('input',function(){
+                let EmailRegex=RegExp('^[0-9a-zA-Z]+[.+-_]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3}){0,1}$')
+                //let EmailRegex=RegExp('^[A-Z]{1,}[a-z]{2,}$')
+                if(EmailRegex.test(email.value))
+                emailError.textContent="";
+                else
+                emailError.textContent="Email is incorrect";
+            })
+
+            const phone=document.querySelector('#number');
+                const phoneError=document.querySelector('.text-number');
+                phone.addEventListener('input',function(){
+                let PhoneRegex=RegExp('^[0-9]{5,}$')
+                if(PhoneRegex.test(phone.value))
+                phoneError.textContent="";
+                else
+                phoneError.textContent="Number is incorrect";
+            })
+            const tel=document.querySelector('#tel');
+                const telError=document.querySelector('.text-tel');
+                tel.addEventListener('input',function(){
+                let TelRegex=RegExp('^[0-9]{5,}$')
+                if(TelRegex.test(tel.value))
+                telError.textContent="";
+                else
+                telError.textContent="tel number is incorrect";
+            })
+                const salary=document.querySelector('#salary');
+                const output=document.querySelector('.salary-output');
+                salary.addEventListener('input',function(){
+                    output.textContent=salary.value;
+                })
+            </script>
+            <style>
+          
+            </style>
+            </body>
+            </html>
